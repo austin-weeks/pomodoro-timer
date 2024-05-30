@@ -91,12 +91,53 @@ h1 {
     text-align: center;
 }
 
-$calculator-background: rgb(73, 82, 86);
 
-$calculator-button: rgb(178, 189, 194);
-$calculator-button-highlight: rgb(164, 176, 182);
-$calculator-button-pressed: rgb(128, 136, 140);
+$timer-top: rgb(165, 127, 192);
+$timer-bottom: rgb(146, 113, 170);
 
-$calculator-screen: black;
-$screen-font: rgba(255, 255, 255, 0.87);
-$radius: 0.4rem;
+$inner-top: rgb(158, 112, 191);
+$inner-bottom: rgb(132, 93, 160);
+
+@mixin border {
+    border: 2px solid black;
+    border-radius: 0.4rem;
+}
+@mixin gradientBackground($top, $bottom) {
+    background: linear-gradient($top, $bottom);
+}
+#timer-settings > * {
+    @include gradientBackground($inner-top, $inner-bottom);
+}
+
+#timer {
+    @include border();
+    @include gradientBackground($timer-top, $timer-bottom);
+
+    width: 30rem;
+    height: 18rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+#timer-settings {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    > * {
+        @include border();
+        width: 30%;
+
+    }
+    .settings-time {
+        font-size: 1.4rem;
+    }
+    .settings-btns {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+}
+
+.button {
+    cursor: pointer;
+    font-size: 1.3rem;
+}
