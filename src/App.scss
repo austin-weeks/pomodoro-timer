@@ -1,0 +1,102 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+    @media (prefers-color-scheme: light) {        
+        color: #213547;
+        background-color: #ffffff;
+    }
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    font-size: 20px;
+
+    @media only screen and (max-width: 500px) {
+        font-size: 18px;
+    }
+
+    @media only screen and (max-width: 400px) {
+        font-size: 15px;
+    }
+
+    @media only screen and (max-width: 300px) {
+        font-size: 12px;
+    }
+
+    @media only screen and (max-height: 800px) {
+        font-size: 18px;
+    }
+
+    @media only screen and (max-height: 650px) {
+        font-size: 15px;
+    }
+
+    @media only screen and (max-height: 500px) {
+        font-size: 12px;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+}
+
+a:hover {
+    color: #535bf2;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+.heading {
+    font-size: .8rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    >* {
+        margin: 1rem;
+    }
+}
+
+.react-logo {
+    position: relative;
+    top: .4em;
+    margin: 0 .2em;
+    transform: scale(1.1);
+}
+
+#root {
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+$calculator-background: rgb(73, 82, 86);
+
+$calculator-button: rgb(178, 189, 194);
+$calculator-button-highlight: rgb(164, 176, 182);
+$calculator-button-pressed: rgb(128, 136, 140);
+
+$calculator-screen: black;
+$screen-font: rgba(255, 255, 255, 0.87);
+$radius: 0.4rem;
