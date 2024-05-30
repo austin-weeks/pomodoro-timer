@@ -101,13 +101,31 @@ h1 {
 }
 
 #timer {
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
   border: 2px solid black;
   border-radius: 0.4rem;
   background: linear-gradient(rgb(165, 127, 192), rgb(146, 113, 170));
   width: 30rem;
-  height: 18rem;
   margin: 0 auto;
   padding: 1rem;
+}
+
+#timer-container {
+  border: 2px solid black;
+  border-radius: 0.4rem;
+  background: linear-gradient(rgb(158, 112, 191), rgb(146, 113, 170));
+  margin: 1em;
+  padding: 0.5em;
+}
+
+#time-display {
+  font-size: 4rem;
+}
+#time-display :first-child {
+  font-size: 2rem;
+  margin-bottom: -0.5em;
 }
 
 #timer-settings {
@@ -126,10 +144,21 @@ h1 {
 #timer-settings .settings-btns {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
+}
+
+#timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+  align-items: center;
 }
 
 .button {
   cursor: pointer;
   font-size: 1.3rem;
+}
+.button.button-big {
+  font-size: 2.5rem;
 }/*# sourceMappingURL=App.css.map */

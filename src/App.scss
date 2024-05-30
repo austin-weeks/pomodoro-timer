@@ -105,18 +105,35 @@ $inner-bottom: rgb(132, 93, 160);
 @mixin gradientBackground($top, $bottom) {
     background: linear-gradient($top, $bottom);
 }
+@mixin unselectable {
+    user-select: none;
+    -webkit-user-select: none;
+}
 #timer-settings > * {
     @include gradientBackground($inner-top, $inner-bottom);
 }
 
 #timer {
+    @include unselectable();
     @include border();
     @include gradientBackground($timer-top, $timer-bottom);
 
     width: 30rem;
-    height: 18rem;
     margin: 0 auto;
     padding: 1rem;
+}
+#timer-container {
+    @include border();
+    @include gradientBackground($inner-top, $timer-bottom);
+    margin: 1em;
+    padding: 0.5em;
+}
+#time-display {
+    font-size: 4rem;
+    :first-child {
+        font-size: 2rem;
+        margin-bottom: -0.5em;
+    }
 }
 #timer-settings {
     display: flex;
@@ -133,11 +150,21 @@ $inner-bottom: rgb(132, 93, 160);
     .settings-btns {
         display: flex;
         justify-content: center;
+        align-items: center;
         gap: 1rem;
     }
+}
+#timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    align-items: center;
 }
 
 .button {
     cursor: pointer;
     font-size: 1.3rem;
+    &.button-big {
+        font-size: 2.5rem;
+    }
 }

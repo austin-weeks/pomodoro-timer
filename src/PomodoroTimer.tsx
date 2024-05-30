@@ -1,4 +1,4 @@
-import { ArrowFatDown, ArrowFatUp, Pause, Play } from "@phosphor-icons/react";
+import { ArrowFatDown, ArrowFatUp, ArrowsCounterClockwise, Pause, Play } from "@phosphor-icons/react";
 import { useState } from "react";
 
 interface SettingsProps {
@@ -12,10 +12,10 @@ function Settings({ time, title }: SettingsProps) {
             <div className="settings-time">{time}:00</div>
             <div className="settings-btns">
                 <div>
-                    <span className="button"><ArrowFatDown weight="bold" /></span>
+                    <ArrowFatDown className="button" weight="bold" />
                 </div>
                 <div>
-                    <span className="button"><ArrowFatUp weight="bold" /></span>
+                    <ArrowFatUp className="button" weight="bold" />
                 </div>
             </div>
         </div>
@@ -28,10 +28,12 @@ interface ControlsProps {
 function Controls({ isCounting }: ControlsProps) {
     return (
         <div id="timer-controls">
-            <div className="button">
-                {isCounting ? <Pause className="button" weight="bold" /> : <Play className="button" weight="bold" />}
+            <div>
+                {isCounting ? <Pause className="button button-big" weight="bold" /> : <Play className="button button-big" weight="bold" />}
             </div>
-            <div>?</div>
+            <div>
+                <ArrowsCounterClockwise className="button button-big" weight="bold" />
+            </div>
         </div>
     );
 }
@@ -40,7 +42,9 @@ function PomodoroTimer() {
     const startingState = {
         workDuration: 25,
         breakDuration: 5,
-        isCounting: false
+        isCounting: false,
+        timeLeft: 25,
+        isWorking: true
     };
     const [state, setState] = useState(startingState);
 
@@ -50,10 +54,13 @@ function PomodoroTimer() {
                 <Settings time={state.workDuration} title="Work Time" />
                 <Settings time={state.breakDuration} title="Break Time" />
             </div>
-            <div id="timer-display">
-                <div>25:00</div>
+            <div id="timer-container">
+                <div id="time-display">
+                    <div>{state.isWorking ? "Working" : "Break"}</div>
+                    <div>{state.timeLeft.toString()}:00</div>
+                </div>
+                <Controls isCounting={state.isCounting} />
             </div>
-            <Controls isCounting={state.isCounting} />
         </div>
     );
 }
