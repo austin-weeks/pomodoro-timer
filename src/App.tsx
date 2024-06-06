@@ -6,7 +6,7 @@ function App() {
     <>
       <div className='heading'>
         <h1>Pomodoro Timer</h1>
-        <h2>WORK IN PROGRESS</h2>
+        <h2>Get Stuff Done!</h2>
       </div>
         <PomodoroTimer />
       <div style={{ fontSize: "0.8rem", marginTop: ".8em" }}>

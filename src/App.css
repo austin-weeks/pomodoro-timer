@@ -20,14 +20,19 @@
 html {
   font-size: 20px;
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 700px) {
   html {
     font-size: 18px;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 660px) {
   html {
-    font-size: 15px;
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  html {
+    font-size: 14px;
   }
 }
 @media only screen and (max-width: 300px) {
@@ -51,6 +56,13 @@ html {
   }
 }
 
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  min-height: 90vh;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -63,10 +75,6 @@ a {
 
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
 }
 
 h1 {
@@ -97,7 +105,12 @@ h1 {
 }
 
 #timer-settings > * {
-  background: linear-gradient(rgb(158, 112, 191), rgb(132, 93, 160));
+  background: linear-gradient(rgb(47, 84, 148), rgb(31, 62, 110));
+}
+@media (prefers-color-scheme: light) {
+  #timer-settings > * {
+    background: linear-gradient(rgb(99, 156, 255), rgb(77, 132, 220));
+  }
 }
 
 #timer {
@@ -106,18 +119,28 @@ h1 {
   -webkit-user-select: none;
   border: 2px solid black;
   border-radius: 0.4rem;
-  background: linear-gradient(rgb(165, 127, 192), rgb(146, 113, 170));
+  background: linear-gradient(rgb(47, 84, 148), rgb(31, 62, 110));
   width: 30rem;
   margin: 0 auto;
   padding: 1rem;
+}
+@media (prefers-color-scheme: light) {
+  #timer {
+    background: linear-gradient(rgb(99, 156, 255), rgb(77, 132, 220));
+  }
 }
 
 #timer-container {
   border: 2px solid black;
   border-radius: 0.4rem;
-  background: linear-gradient(rgb(158, 112, 191), rgb(146, 113, 170));
+  background: linear-gradient(rgb(47, 84, 148), rgb(31, 62, 110));
   margin: 1em;
   padding: 0.5em;
+}
+@media (prefers-color-scheme: light) {
+  #timer-container {
+    background: linear-gradient(rgb(99, 156, 255), rgb(77, 132, 220));
+  }
 }
 
 #time-display {
