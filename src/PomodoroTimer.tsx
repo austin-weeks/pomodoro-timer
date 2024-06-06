@@ -46,7 +46,7 @@ function Controls({ isCounting, resetTimer, toggleTimer }: ControlsProps) {
 }
 
 function PomodoroTimer() {
-    const [workDur, setWorkDur] = useState(1);
+    const [workDur, setWorkDur] = useState(25);
     const [breakDur, setBreakDur] = useState(5);
     const [working, setWorking] = useState(true);
     const [isCounting, setIsCounting] = useState(false);
@@ -66,14 +66,14 @@ function PomodoroTimer() {
             } else {
                 setSecsLeft(prev => prev - 1);
             }
-        }, 10);
+        }, 1000);
         return () => clearInterval(timer);
     });
 
     function swapTimer() {
         setMinsLeft(working ? breakDur : workDur);
         setWorking(!working);
-        const beep = new Audio("./assets/Beep.mp3");
+        const beep = new Audio("Beep.mp3");
         beep.play();
     }
 
