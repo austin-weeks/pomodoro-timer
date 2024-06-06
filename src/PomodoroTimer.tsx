@@ -46,12 +46,58 @@ function Controls({ isCounting, resetTimer, toggleTimer }: ControlsProps) {
 }
 
 function PomodoroTimer() {
-    const [workDur, setWorkDur] = useState(25);
-    const [breakDur, setBreakDur] = useState(5);
-    const [working, setWorking] = useState(true);
+    const WORK_DUR = "workDur";
+    const BREAK_DUR = "breakDur";
+    const WORKING = "working";
+    const MINS_LEFT = "minsLeft";
+    const SECS_LEFT = "secsLeft";
+    function loadWorkDur() {
+        const dur = localStorage.getItem(WORK_DUR);
+        return dur ? parseInt(dur) : 25;
+    }
+    function setWorkDur(duration: number) {
+        setWorkDurState(duration);
+        localStorage.setItem(WORK_DUR, duration.toString());
+    }
+    function loadBreakDur() {
+        const dur = localStorage.getItem(BREAK_DUR);
+        return dur ? parseInt(dur) : 5;
+    }
+    function setBreakDur(duration: number) {
+        setBreakDurState(duration);
+        localStorage.setItem(BREAK_DUR, duration.toString());
+    }
+    function loadWorking() {
+        const working = localStorage.getItem(WORKING);
+        return working ? working === "true" : true;
+    }
+    function setWorking(working:boolean) {
+        setWorkingState(working);
+        localStorage.setItem(WORKING, working.toString());
+    }
+    function loadMinsLeft(){
+        const mins = localStorage.getItem(MINS_LEFT);
+        return mins ? parseInt(mins) : loadWorkDur();
+    }
+    function setMinsLeft(minsLeft: number) {
+        setMinsLeftState(minsLeft);
+        localStorage.setItem(MINS_LEFT, minsLeft.toString());
+    }
+    function loadSecsLeft() {
+        const sec = localStorage.getItem(SECS_LEFT);
+        return sec ? parseInt(sec) : 0;
+    }
+    function setSecsLeft(secsLeft: number) {
+        setSecsLeftState(secsLeft);
+        localStorage.setItem(SECS_LEFT, secsLeft.toString());
+    }
+
+    const [workDur, setWorkDurState] = useState(loadWorkDur());
+    const [breakDur, setBreakDurState] = useState(loadBreakDur());
+    const [working, setWorkingState] = useState(loadWorking());
     const [isCounting, setIsCounting] = useState(false);
-    const [minsLeft, setMinsLeft] = useState(workDur);
-    const [secsLeft, setSecsLeft] = useState(0);
+    const [minsLeft, setMinsLeftState] = useState(loadMinsLeft());
+    const [secsLeft, setSecsLeftState] = useState(loadSecsLeft());
 
     useEffect(() => {
         let timer = setTimeout(() => {
@@ -61,10 +107,10 @@ function PomodoroTimer() {
                 if (minsLeft === 0) swapTimer();
                 else {
                     setSecsLeft(59);
-                    setMinsLeft(prev => prev - 1);
+                    setMinsLeft(minsLeft - 1);
                 }
             } else {
-                setSecsLeft(prev => prev - 1);
+                setSecsLeft(secsLeft - 1);
             }
         }, 1000);
         return () => clearInterval(timer);
